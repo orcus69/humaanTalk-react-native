@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "ola-humano",
+    "slug": "ola-humano",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "ola-humano"
+}
