@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "383821408030",
+    "project_id": "ola-humano",
+    "storage_bucket": "ola-humano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383821408030:android:7c6fdbd588c405243b4b0f",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383821408030-990pq957phvrql32p2orrph456ggenb9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV2xAAT04Ld0ciCPYukjAPU_dRZaPy0HA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383821408030-990pq957phvrql32p2orrph456ggenb9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
