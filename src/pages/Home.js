@@ -3,13 +3,15 @@ import React,{ useState, useEffect } from 'react';
 import { 
   StyleSheet, 
   Text, View, SafeAreaView, TouchableOpacity, ActivityIndicator,
-  FlatList
+  FlatList,
+  ScrollView
 } from 'react-native';
 import Card from './components/Card'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { db } from '../utils/firebase';
 import { Posts } from '../models/Posts';
 import { useIsFocused } from '@react-navigation/native';
+import { auth } from '../utils/firebase';
 
 
 export default function Home({navigation}) {
@@ -34,56 +36,65 @@ export default function Home({navigation}) {
       
   }
 
+  function logout(){
+    auth
+    .signOut()
+    .then(() => navigation.navigate('Login'));
+  }
+
 
   return (
-    <>
-    <SafeAreaView style={{ padding: 28 }}>
-      <View style={styles.container}>
-        <Text style={styles.text}>Humanos estão</Text> 
-        <Text style={styles.text}>falando...</Text>
-        <StatusBar style="auto" />
-      </View>
+    <><SafeAreaView style={{ padding: 28, flex: 1 }}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.text}>Humanos estão</Text>
+          <Text style={styles.text}>falando...</Text>
+          <TouchableOpacity onPress={() => logout()}>
+            <Text style={{
+              color: 'red',
+              fontStyle: 'normal',
+              fontWeight: 'bold',
+              fontSize: 20,
+              lineHeight: 47,
+            }}>Sair</Text>
+          </TouchableOpacity>
+          <StatusBar style="auto" />
+        </View>
 
-      <View>
-        {
-          posts != null ?
-          <FlatList
-            data={posts.filter(p => p.title.toLowerCase().includes(queryString.toLowerCase()))}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) =>
-            
-              <Card 
+        <View>
+          {posts != null ?
+            <FlatList
+              data={posts.filter(p => p.title.toLowerCase().includes(queryString.toLowerCase()))}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => <Card
                 content={item}
-                onPress={loadPosts}
-              />
-            }
-          />
-          :
-          <View sFtyle={{ marginTop: 30, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                onPress={loadPosts} />} />
+            :
+            <View sFtyle={{ marginTop: 30, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <Text>Carregando dados...</Text>
               <ActivityIndicator size="large" />
-          </View>
-        }
-      </View>
+            </View>}
+        </View>
 
-      
+
+      </ScrollView>
     </SafeAreaView>
     <TouchableOpacity
-    style={{
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 60,
-      position: 'absolute',
-      bottom: 10,
-      right: 10,
-      height: 60,
-      backgroundColor: '#FF7A00',
-      borderRadius: 100,
-    }}
-    onPress={() => navigation.navigate('Posting', {post: new Posts('','',0, '', '', '')})}
-  >
-    <Icon name='shape-square-plus' size={24} color='white' />
-  </TouchableOpacity></>
+      style={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 60,
+        position: 'absolute',
+        bottom: 40,
+        right: 10,
+        height: 60,
+        backgroundColor: '#FF7A00',
+        borderRadius: 100,
+      }}
+      onPress={() => navigation.navigate('Posting', { post: new Posts('', '', 0, '', '', '') })}
+    >
+        <Icon name='shape-square-plus' size={24} color='white' />
+      </TouchableOpacity></>
   );
 }
 

@@ -46,10 +46,10 @@ export default function Poster({route, navigation}) {
     <ScrollView style={{ padding: 28 }}>
       <View style={styles.container}>
         <Text style={styles.text}>Fale alguma coisa também!</Text>
-        
+        <StatusBar style="auto" />
       </View>
 
-        {/* <View style={styles.box}>
+      <View style={[styles.box]}>
             <View>
               <TextInput
                 style={styles.input}
@@ -67,32 +67,26 @@ export default function Poster({route, navigation}) {
                 underlineColorAndroid="transparent"
               />
             </View>
-        </View> */}
+        </View>
 
-      {<View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 48, paddingLeft: 1}}>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 48, paddingLeft: 1}}>
           <Text style={{fontWeight: 'bold', fontSize: 24, lineHeight: 28, color: '#615B57'}}>Escolhe a cor aí!</Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
               <TouchableOpacity 
                 style={[styles.card, {backgroundColor: '#FF7A00' , borderWidth: color != '#FF7A00' ? 0 : 2, borderColor: 'blue'}]}
-                onPress={()=>{
-                  onChangeColor('#FF7A00')
-                }}
+                onPress={()=>onChangeColor('#FF7A00')}
               />
               <TouchableOpacity 
                 style={[styles.card, {backgroundColor: '#19B200', borderWidth: color != '#19B200' ? 0 : 2, borderColor: 'blue'}]}
-                onPress={()=>{
-                  onChangeColor('#19B200')
-                }}
+                onPress={()=>onChangeColor('#19B200')}
               />
               <TouchableOpacity 
               
                 style={[styles.card, {backgroundColor: '#00C2FF', borderWidth: color != '#00C2FF' ? 0 : 2, borderColor: 'blue'}]}
-                onPress={()=>{
-                  onChangeColor('#00C2FF')
-                }}
+                onPress={()=>onChangeColor('#00C2FF')}
               />
           </View>
-      </View>}
+      </View>
 
       <TouchableOpacity
         style={styles.button}
@@ -123,8 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     lineHeight: 47,
     paddingTop: 12,
-    paddingBottom: 17,
-    height: 40,
+    paddingBottom: 2,
     marginVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#8A8888',
@@ -144,12 +137,12 @@ const styles = StyleSheet.create({
     height: 58,
   },
   card: {
-    width: '46px',
-    height: '43px',
+    width: 46,
+    height: 43,
     borderRadius: 11,
-    marginBottom: 17,
-    marginHorizontal: 6,
-    elevation: 20,
+    marginBottom: 4,
+    marginHorizontal: 2,
+    elevation: 2,
     shadowColor: '#171717',
     shadowOffset: {width: 4, height: 4},
     shadowOpacity: 0.25,
@@ -157,8 +150,7 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: '#f8f8f8',
-    width: "100%", 
-    height: 197,
+    width: "100%",
     paddingHorizontal: 24,
     borderRadius: 11,
     marginBottom: 17,

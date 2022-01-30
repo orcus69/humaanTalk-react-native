@@ -36,83 +36,82 @@ export default function Home(props, {navigation}) {
     return (
         
             
-                <View key={props.content.id} style={[styles.card, {backgroundColor: props.content.color==null ? "#FF7A00" : props.content.color,}]}>
-                    <MenuProvider>
-                    <View style={{flexDirection: 'row', justifyContent:"space-between", paddingTop: 11}}>
-                        <View style={{flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name='account' color='white' size={20}/>
-                            <Text style={styles.text}>
-                                @{props.content.user}
-                            </Text>
-                        </View> 
-                        { props.content.user == user.user.email && 
-                        <Menu onSelect={value => alert(`You Clicked : ${value}`)}>
-                        <MenuTrigger>
-                            <Icon name="dots-vertical" color='white' size={20}/>
-                        </MenuTrigger>
-                        <MenuOptions>
-                            <MenuOption value={"edit"} >
-                                <TouchableOpacity
-                                    style={{flexDirection: 'row', alignItems: 'center' }} 
-                                    onPress={() => {useNavigate.navigate('Posting',{ post: props.content })}}
-                                >
-                                    <Icon name="pencil" color='#0786CE' size={20}/>
-                                    <Text style={styles.menuContent}>Editar</Text>
-                                </TouchableOpacity>
-                                
-                            </MenuOption>
-                            <MenuOption value={"remove"}>
-                                <TouchableOpacity
-                                    style={{flexDirection: 'row', alignItems: 'center' }}
-                                    onPress={() => remove()}
-                                >
-                                    <Icon name="trash-can" color='#0786CE' size={20}/>
-                                    <Text style={styles.menuContent}>Remover</Text>
-                                </TouchableOpacity>
-                                
-                            </MenuOption>
-                        </MenuOptions>
-                        </Menu>
-                        }        
-                    </View>
+        <View key={props.content.id} style={[styles.card, {backgroundColor: props.content.color==null ? "#FF7A00" : props.content.color,}]}>
+            <MenuProvider>
+            <View style={{flexDirection: 'row', justifyContent:"space-between", paddingTop: 11}}>
+                <View style={{flexDirection: 'row', alignItems: 'center' }}>
+                    <Icon name='account' color='white' size={20}/>
+                    <Text style={styles.text}>
+                        @{props.content.user}
+                    </Text>
+                </View> 
+                { props.content.user == user.user.email && 
+                
+                <Menu onSelect={value => alert(`You Clicked : ${value}`)}>
+                <MenuTrigger>
+                    <Icon name="dots-vertical" color='white' size={20}/>
+                </MenuTrigger>
+                <MenuOptions>
+                    <MenuOption value={"edit"} >
+                        <TouchableOpacity
+                            style={{flexDirection: 'row', alignItems: 'center' }} 
+                            onPress={() => {useNavigate.navigate('Posting',{ post: props.content })}}
+                        >
+                            <Icon name="pencil" color='#0786CE' size={20}/>
+                            <Text style={styles.menuContent}>Editar</Text>
+                        </TouchableOpacity>
                         
-                    <View>
-                        <Text style={{
-                            color: 'white', 
-                            fontWeight: 'bold',
-                            fontSize: 40,
-                            lineHeight: 47,
-                            paddingTop: 12
-                        }}>
-                            {props.content.title}
-                        </Text>
+                    </MenuOption>
+                    <MenuOption value={"remove"}>
+                        <TouchableOpacity
+                            style={{flexDirection: 'row', alignItems: 'center' }}
+                            onPress={() => remove()}
+                        >
+                            <Icon name="trash-can" color='#0786CE' size={20}/>
+                            <Text style={styles.menuContent}>Remover</Text>
+                        </TouchableOpacity>
                         
-        
-                        <Text style={{
-                            color: 'black', 
-                            fontWeight: 'bold',
-                            fontSize: 18,
-                            lineHeight: 21,
-                            paddingTop: 12,
-                            flex: 0.5
-                        }}>
-                        {props.content.content}
-                        </Text>
-                    </View>
-                    </MenuProvider>
+                    </MenuOption>
+                </MenuOptions>
+                </Menu>
+                }        
+            </View>
+                        
+            <View>
+                <Text style={{
+                    color: 'white', 
+                    fontWeight: 'bold',
+                    fontSize: 40,
+                    lineHeight: 47,
+                    paddingTop: 12
+                }}>
+                    {props.content.title}
+                </Text>
 
-                    <View style={{flexDirection: 'row', justifyContent:"space-between", paddingVertical: 12}}>
-                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                            <TouchableOpacity onPress={()=>addCoffe()}>
-                                <Icon name="coffee-outline" color='white' size={20}/>
-                            </TouchableOpacity>
-                            <Text style={styles.text}>
-                                {coffe}
-                            </Text>
-                        </View>
-                        <Icon name="export-variant" color='white' size={20}/>
-                    </View>
+                <Text style={{
+                    color: 'black', 
+                    fontWeight: 'bold',
+                    fontSize: 18,
+                    lineHeight: 21,
+                    paddingTop: 12,
+                }}>
+                    {props.content.content}
+                </Text>
+            </View>
+            </MenuProvider>
+
+            <View style={{flexDirection: 'row', justifyContent:"space-between", paddingVertical: 12}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={()=>addCoffe()}>
+                        <Icon name="coffee-outline" color='white' size={20}/>
+                    </TouchableOpacity>
+                    <Text style={styles.text}>
+                        {coffe}
+                    </Text>
                 </View>
+                <Icon name="export-variant" color='white' size={20}/>
+            </View>
+        </View>
     );
 }
 
@@ -126,9 +125,9 @@ const styles = StyleSheet.create({
         marginBottom: 17,
         alignContent: 'space-around',
         flex: 1,
-        elevation: 20,
+        elevation: 10,
         shadowColor: '#171717',
-        shadowOffset: {width: 4, height: 4},
+        shadowOffset: {width: -2, height: 2},
         shadowOpacity: 0.25,
         shadowRadius: 11
     },
